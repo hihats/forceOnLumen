@@ -12,15 +12,5 @@
 */
 
 $app->get('/', ['uses' => 'TopController@index']);
-/*
-$app->get('/', function () use ($app) {
-    return $app->welcome();
-});
-*/
 $app->get('/sobject/{name}', ['uses' => 'SobjectController@describe']);
-$app->put('/sobject/{name}/bulk_update', 'SobjectController@bulkUpdate');
-$app->get('/product', ['uses' => 'ProductController@index']);
-$app->post('products', function() use($app){
-  $data = Request::all();
-  return json_encode($data);
-});
+$app->get('/sobject/{objName}/show/{oid}', 'SobjectController@show');
