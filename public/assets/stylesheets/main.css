@@ -1,0 +1,30 @@
+.header {
+  margin-top: 18rem;
+  text-align: center;
+}
+
+#contents{
+	margin:0 20px;
+}
+
+#main_contents{
+	float:left;
+	width:730px;
+	margin-right:20px;
+	_margin-right:16px; /* IE6バグ用 */
+}
+
+
+div.containers {
+    width:990px;
+	margin:0 auto;
+	padding:0px;
+	position: relative;
+	top: 0;
+	left: 220px;
+}
+div#sub_contents {
+	position: relative;
+	top: 0;
+	left: -750px;
+}
