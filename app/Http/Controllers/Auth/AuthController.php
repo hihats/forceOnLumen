@@ -1,12 +1,17 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+require __DIR__.'/../../Models/Operators.php';
 
 use App\User;
 use Validator;
+use Log;
 use App\Http\Controllers\Controller;
+use App\Http\Models\Operator;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use App\Http\Middleware\Authenticate;
 
 class AuthController extends Controller
 {
@@ -21,7 +26,7 @@ class AuthController extends Controller
     |
     */
 
-    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+//    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
     /**
      * Where to redirect users after login / registration.
@@ -37,7 +42,19 @@ class AuthController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest', ['except' => 'logout']);
+//        $this->middleware('guest', ['except' => 'logout']);
+    }
+
+    public function login(Request $req)
+    {
+        Log::debug("before login.");
+        $email = $req->input('email');
+        $password = $req->input('password');
+        $operator = Operator::where('email', '=', $email)->firstOrFail();
+        if (Authenticate::_encrypt_password($password) == $operator->password){
+            return TRUE;
+        }
+        return FALSE;
     }
 
     /**
@@ -70,4 +87,3 @@ class AuthController extends Controller
         ]);
     }
 }
-

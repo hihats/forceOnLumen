@@ -9,10 +9,11 @@ class Controller extends BaseController
 {
     public function index()
     {
+        $req->middleware('auth', ['except' => ['index']]);
         return view('top.index', ['results' => $results]);
     }
     public function authenticate()
     {
-        
+
     }
 }
