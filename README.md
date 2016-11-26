@@ -2,6 +2,9 @@
 
 The description of lumen is outlined below.
 
+## Static code analysis 静的解析
+[Scrutinizer](https://scrutinizer-ci.com/g/hihats/lumen/)
+
 ## Lumen PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
